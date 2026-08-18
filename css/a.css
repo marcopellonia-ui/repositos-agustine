@@ -1,0 +1,221 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Comic Sans MS', 'Courier New', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: hidden;
+  padding: 20px;
+  animation: fondoPsicodelico 2s infinite alternate linear;
+}
+
+/* --- TÍTULOS Y EFECTOS --- */
+h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  text-shadow: 4px 4px 0px #ff0055, -4px -4px 0px #00e5ff, 0 0 20px #fff;
+  animation: temblor 0.08s infinite alternate, estirar 1.5s infinite alternate ease-in-out;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Elementos flotantes */
+.ovni {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #00ff66;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #00ff66;
+  animation: vueloLoco 4s infinite ease-in-out;
+  pointer-events: none;
+}
+
+.caja-giratoria {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(45deg, #ff0055, #ffff00, #00e5ff);
+  border: 5px dashed #fff;
+  animation: girarYDeformar 3s infinite linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.caja-giratoria:hover {
+  animation: hiperVelocidad 0.1s infinite linear;
+}
+
+/* --- SECCIÓN PRINCIPAL DE NOMBRES --- */
+.seccion-nombres {
+  background: rgba(15, 15, 25, 0.85);
+  border: 4px double #ff0055;
+  box-shadow: 0 0 25px #ff0055, inset 0 0 15px #00e5ff;
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  animation: flotar 3s infinite ease-in-out;
+  z-index: 10;
+}
+
+.seccion-nombres h2 {
+  font-size: 1.8rem;
+  color: #00e5ff;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px #00e5ff;
+}
+
+.subtitulo-lista {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: #ffff00;
+}
+
+/* Formulario e Input */
+.form-loco {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input[type="text"] {
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  border: 3px solid #ffff00;
+  background: #111;
+  color: #00ff66;
+  border-radius: 10px;
+  outline: none;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 0 10px #ffff00;
+  transition: transform 0.2s;
+}
+
+input[type="text"]:focus {
+  transform: scale(1.05) rotate(2deg);
+  border-color: #ff0055;
+  box-shadow: 0 0 20px #ff0055;
+}
+
+button {
+  padding: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: #00e5ff;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 15px #00e5ff;
+  animation: rebotar 1.5s infinite;
+}
+
+button:hover {
+  background: #ff0055;
+  color: #fff;
+  transform: scale(1.1) rotate(-5deg);
+}
+
+/* Lista de tags de nombres */
+.lista-nombres {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.tag-nombre {
+  background: #222;
+  border: 2px solid #00ff66;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  box-shadow: 0 0 10px #00ff66;
+  animation: aparecerLoco 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  display: inline-block;
+}
+
+.tag-nombre:nth-child(even) {
+  border-color: #ff0055;
+  box-shadow: 0 0 10px #ff0055;
+  animation: aparecerLoco 0.5s ease-out, temblor 0.2s infinite alternate;
+}
+
+.tag-nombre:nth-child(3n) {
+  border-color: #ffff00;
+  color: #ffff00;
+  box-shadow: 0 0 10px #ffff00;
+}
+
+/* --- ANIMACIONES CSS --- */
+
+@keyframes fondoPsicodelico {
+  0% { background-color: #050014; }
+  50% { background-color: #1a001a; }
+  100% { background-color: #001a14; }
+}
+
+@keyframes temblor {
+  0% { transform: translate(2px, 1px) rotate(0deg); }
+  50% { transform: translate(-2px, -1px) rotate(-2deg); }
+  100% { transform: translate(-1px, 2px) rotate(2deg); }
+}
+
+@keyframes estirar {
+  from { transform: scale(0.9) skewX(-5deg); }
+  to { transform: scale(1.1) skewX(5deg); }
+}
+
+@keyframes girarYDeformar {
+  0% { transform: rotate(0deg) scale(1); border-radius: 10%; }
+  50% { transform: rotate(180deg) scale(1.3) skew(20deg); border-radius: 50%; }
+  100% { transform: rotate(360deg) scale(1); border-radius: 10%; }
+}
+
+@keyframes hiperVelocidad {
+  0% { transform: scale(1.5) rotate(0deg); }
+  100% { transform: scale(1.5) rotate(360deg); }
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+@keyframes rebotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes vueloLoco {
+  0% { top: 10%; left: 10%; }
+  33% { top: 70%; left: 80%; transform: scale(1.5); }
+  66% { top: 80%; left: 10%; transform: scale(0.6); }
+  100% { top: 10%; left: 10%; }
+}
+
+@keyframes aparecerLoco {
+  0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
